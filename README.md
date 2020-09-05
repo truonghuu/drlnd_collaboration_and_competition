@@ -11,8 +11,8 @@ It is to be noted that while there are two agents in the environment, they are n
 
 The task is episodic, and in order to solve the environment, the agents must get an average score of +0.5 (over 100 consecutive episodes, after taking the maximum over both agents). Specifically,
 
- * Item: After each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields 2 (potentially different) scores. We then take the maximum of these 2 scores.
- * Item: This yields a single score for each episode.
+ * After each episode, we add up the rewards that each agent received (without discounting), to get a score for each agent. This yields 2 (potentially different) scores. We then take the maximum of these 2 scores.
+ * This yields a single score for each episode.
 
 The environment is considered solved, when the average (over 100 episodes) of those scores is at least +0.5.
 
@@ -26,12 +26,12 @@ The observation (state) space consists of 8 variables corresponding to the posit
 
 The repository consists of the following files:
 
-* Item: Tennis.ipynb` - the main notebook which will be used to run and train the agent.
-* Item:`agent.py` - defines the Agent that is being trained
-* Item:`model.py` - defines the PyTorch model for the Actor and the Critic network
-* Item:`checkpoint_actor.pth` - stores the weights of the trained Actor network when the environment is solved 
-* Item:`checkpoint_critic.pth` - stores the weights of the trained Critic network when the environment is solved 
-* Item:`Report.md` - The report presenting the details of the DDPG algorithm and experimental results.
+* `Tennis.ipynb` - the main notebook which will be used to run and train the agent.
+* `agent.py` - defines the Agent that is being trained
+* `model.py` - defines the PyTorch model for the Actor and the Critic network
+* `checkpoint_actor.pth` - stores the weights of the trained Actor network when the environment is solved 
+* `checkpoint_critic.pth` - stores the weights of the trained Critic network when the environment is solved 
+* `Report.md` - The report presenting the details of the DDPG algorithm and experimental results.
 
 ### Getting Start
 
