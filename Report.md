@@ -42,7 +42,7 @@ We define the Actor and Critic networks with fully-connected layers. Except the 
 
 ##### Actor network
 
-Input layer: 33 nodes (corresponding to 33 variables of the state of the environment)
+Input layer: 24 nodes (corresponding to 24 variables of the state of the environment)
 
 Hidden layer 1: 256 nodes
 
@@ -50,11 +50,11 @@ Hidden layer 2: 128 nodes
 
 Hidden layer 3: 64 nodes
 
-Output layer: 4 nodes (corresponding to the number of entries in the action vector of the agent)
+Output layer: 2 nodes (corresponding to the number of entries in the action vector of the agent)
 
 ##### Critic network
 
-Input layer: 37 nodes (corresponding to 33 variables of the state of the environment and 4 variables of the action)
+Input layer: 26 nodes (corresponding to 24 variables of the state of the environment and 2 variables of the action)
 
 Hidden layer 1: 256 nodes
 
@@ -67,3 +67,23 @@ Output layer: 1 node (corresponding the Q-value)
 We note that betwen hidden layer 1 and hidden layer 2 of both networks, we add a batch normalization layer to standardizes the inputs to hidden layer 2 for each mini-batch. This helps further stabilize the learning process since activations can vary a lot due to fluctuating values of input state. For the Critic network, rather than concatenating the state and action before feeding to hidden layer 1, we first feed the state to hidden layer 1 and then concatenate the output of hidden layer 1 with the action to feed in hidden 2. It is also to be noted that hidden layer 3 for the Actor network is randomly initialized in the range (-0.003, 0.003). This allows us to avoid getting 1 or -1 output values in the initial stages, which would squash our gradients to zero, as we use the `tanh` activation for the output layer.
 
 The implementation of the Actor and Critic networks is presented in `model.py`.
+
+#### Future Directions
+
+As mentioned in the exploration section, noise generation has been done by using Ornstein-Uhlenbeck Process. It would be interesting to implement the Gaussian process and validate this approach in compared with Ornstein-Uhlenbeck Process. 
+
+It is also interesting to implement more advanced algorithms and compared their performance with DDPG. With continuous action space, we can implement the following algorithms to sove this problem.
+
+* Distributed Distributional Deterministic Policy Gradients [2]
+* Asynchorous Methods for Deep Reinforcement Learning [3]
+* Proximal Policy Optimization Algorithms [4]
+
+#### References
+
+[1] https://arxiv.org/pdf/1802.09477.pdf
+
+[2] https://arxiv.org/pdf/1804.08617.pdf
+
+[3] https://arxiv.org/abs/1602.01783
+
+[4] https://arxiv.org/abs/1707.06347
