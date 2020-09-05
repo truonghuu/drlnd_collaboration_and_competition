@@ -53,7 +53,7 @@ If you are running this project in your local desktop, you need to install the f
 * `tensorflow==1.7.1`
 * `Pillow>=4.2.1`
 * `matplotlib`
-*` numpy>=1.11.0`
+* `numpy>=1.11.0`
 * `jupyter`
 * ` pytest>=3.2.2`
 * `docopt`
