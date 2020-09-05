@@ -96,6 +96,12 @@ After updating parameters of both local Actor and Critic network, we then use "s
 
 Similar to other reinforcement learning algorithms, the agent trained with DDPG also explores the environment by selecting random actions rather than always using the best action it has learned. For discrete action spaces, exploration is done using epsilon-greedy that probabilistically selects a random action. For continuous action spaces, exploration is done by adding noise to the action itself. The original DDPG algorithm uses Ornstein-Uhlenbeck Process to generate noise and add to the action. We keep using this approach in this project. Nevertheless, recent literature (see the references [1,2]) stated that this can also be done by using a Gaussian process. We keep this adoption of Gaussian process for noise generation for future work.  
 
+#### Experimental Results
+
+All the training parameters are defined in the file `agent.py`. The discount factor is set to `0.99`, the learning rate for all the networks is set to `1e-3`, the fraction (τ) for updating the target networks is set to `1e-3`. In the figure below, we present the evolution of the score achieved along the training episodes. The results show that the agent achieves the expected average score (i.e., greater than `0.5`) after `1686` training episodes. While achieving expected score and get the environment solves, the results also show that there is a huge variation in the score achieved at each episode. This requires further investigation to improve the stabliness of the performance of the agent.
+
+![Experimental results](figures/results.png)
+
 #### Future Directions
 
 As mentioned in the exploration section, noise generation has been done by using Ornstein-Uhlenbeck Process. It would be interesting to implement the Gaussian process and validate this approach in compared with Ornstein-Uhlenbeck Process. 
