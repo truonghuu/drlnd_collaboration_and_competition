@@ -26,17 +26,12 @@ The observation (state) space consists of 8 variables corresponding to the posit
 
 The repository consists of the following files:
 
-`Continuous_Control.ipynb` - the main notebook which will be used to run and train the agent.
-
-`agent.py` - defines the Agent that is being trained
-
-`model.py` - defines the PyTorch model for the Actor and the Critic network
-
-`checkpoint_actor.pth` - stores the weights of the trained Actor network when the environment is solved 
-
-`checkpoint_critic.pth` - stores the weights of the trained Critic network when the environment is solved 
-
-`Report.md` - The report presenting the details of the DDPG algorithm and experimental results.
+* Item: Tennis.ipynb` - the main notebook which will be used to run and train the agent.
+* Item:`agent.py` - defines the Agent that is being trained
+* Item:`model.py` - defines the PyTorch model for the Actor and the Critic network
+* Item:`checkpoint_actor.pth` - stores the weights of the trained Actor network when the environment is solved 
+* Item:`checkpoint_critic.pth` - stores the weights of the trained Critic network when the environment is solved 
+* Item:`Report.md` - The report presenting the details of the DDPG algorithm and experimental results.
 
 ### Getting Start
 
