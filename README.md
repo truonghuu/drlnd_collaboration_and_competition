@@ -37,8 +37,6 @@ The repository consists of the following files:
 
 #### Download the Environment
 
-To be able to run this project, you need to install dependencies by following the instructions in this [link](https://github.com/udacity/deep-reinforcement-learning#dependencies).
-
 A prebuilt environment has to be installed. You need to download the corresponding environment depending on your operating system.
 * Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)
 * Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
@@ -49,7 +47,8 @@ Unzip the file to a folder, which you need to refer at the second code cell in `
 
 #### Dependencies
 
-If you are running this project in your local desktop, you need to install the following libraries.
+To be able to run this project, you need to install dependencies by following the instructions in this [link](https://github.com/udacity/deep-reinforcement-learning#dependencies). The following libraries are needed.
+
 * `tensorflow==1.7.1`
 * `Pillow>=4.2.1`
 * `matplotlib`
