@@ -3,3 +3,4 @@
 
 ### Project Description
 
+[Environment Image](figures/tennis.png)
