@@ -35,3 +35,17 @@ The repository consists of the following files:
 
 ### Getting Start
 
+#### Download the Environment
+
+To be able to run this project, you need to install dependencies by following the instructions in this [link](https://github.com/udacity/deep-reinforcement-learning#dependencies).
+
+A prebuilt environment has to be installed. You need to download the corresponding environment depending on your operating system.
+* Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)
+* Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
+* Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86.zip)
+* Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86_64.zip)
+
+Unzip the file to a folder, which you need to refer at the second code cell in `Tennis.ipynb`. 
+
+You can now start exploring the environment and implement your own training algorithm! Open `Tennis.ipynb` and follow step by step to train the agent and see its working.
+
