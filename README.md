@@ -47,5 +47,23 @@ A prebuilt environment has to be installed. You need to download the correspondi
 
 Unzip the file to a folder, which you need to refer at the second code cell in `Tennis.ipynb`. 
 
+#### Dependencies
+
+If you are running this project in your local desktop, you need to install the following libraries.
+* `tensorflow==1.7.1`
+* `Pillow>=4.2.1`
+* `matplotlib`
+*` numpy>=1.11.0`
+* `jupyter`
+* ` pytest>=3.2.2`
+* `docopt`
+* `pyyaml`
+* `protobuf==3.5.2`
+* `grpcio==1.11.0`
+* `torch==0.4.0`
+* `pandas`
+* `scipy`
+* `ipykernel`
+
 You can now start exploring the environment and implement your own training algorithm! Open `Tennis.ipynb` and follow step by step to train the agent and see its working.
 
