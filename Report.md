@@ -30,7 +30,22 @@ Since the action of the agent is continuous, we adopt Deep Deterministic Policy 
 
 #### Experience Replay
 
-Since DDPG adopts DQN, it also uses a replay buffer, which is a finite-sized memory (we have set the size of the reppay buffer to 100000) to store all the experience tuples (state, action, reward, next_state). At every time step, the algorithm randomly samples a mini-batch from the replay buffer to update the value and policy networks. In the code, we have set the mini-batch size to 128. It is worth recalling that experience replay helps to break the temporal/chronological correlation among state/action pairs in each training episode. Without experience replay, this correlation could lead to instability (oscillation or divergence of Q-Values) during training as small updates to Q-values may significantly change the policy.
+Since DDPG adopts DQN, it also uses a replay buffer, which is a finite-sized memory (we have set the size of the reppay buffer to 100000) to store all the experience tuples (`state, action, reward, next_state`). As there are two agents in the game, at every step, there will be two sets of values of experience tuples that will be added to the experience buffer. At the learning step, the algorithm randomly samples a mini-batch from the replay buffer to update the value and policy networks. In the code, we have set the mini-batch size to 128. The function below shows the steps how the agent manages the experience buffer.
+
+.. code:: python
+def step(self, states, actions, rewards, next_states, dones):
+        """Save experience in replay memory, and use random sample from buffer to learn."""
+        # Save experience / reward
+        for i in range(self.num_agents):                                                
+            self.memory.add(states[i,:], actions[i,:], rewards[i], next_states[i,:], dones[i]) 
+      
+        # Learn, if enough samples are available in memory
+        if len(self.memory) > BATCH_SIZE:
+            experiences = self.memory.sample()
+            self.learn(experiences, GAMMA)
+
+
+It is worth recalling that experience replay helps to break the temporal/chronological correlation among state/action pairs in each training episode. Without experience replay, this correlation could lead to instability (oscillation or divergence of Q-Values) during training as small updates to Q-values may significantly change the policy.
 
 #### Exploration 
 
