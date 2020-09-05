@@ -56,7 +56,7 @@ The implementation of the Actor and Critic networks is presented in `model.py`.
 
 ### Learning Algorithm
 
-Since the action of the agent is continuous, we adopt Deep Deterministic Policy Gradient (DDPG) algorithm, which is a model-free off-policy algorithm to train the agent. DDPG combines the ideas of DPG (Deterministic Policy Gradient) and DQN (Deep Q-Network) in which Actor and Critic, each having two neural networks: a regular (local) network and a target network. The target networks are actually the copies of the regular networks but slowly learns, thus improving the stability in training. The code snippet below presents the declaration of the Actor and Critic networks with local and target versions separately.
+Since the action of the agent is continuous, we adopt Deep Deterministic Policy Gradient (DDPG) algorithm, which is a model-free off-policy algorithm to train the agent. DDPG combines the ideas of DPG (Deterministic Policy Gradient) and DQN (Deep Q-Network) in which Actor and Critic, each having two neural networks: a regular (local) network and a target network. The target networks are actually the copies of the regular networks but slowly learns (using "soft" updates based on the local networks), thus improving the stability in training. The code snippet below presents the declaration of the Actor and Critic networks with local and target versions separately.
 
 ```python
 # Local and Target Networks of the Actor
@@ -84,9 +84,13 @@ It is worth recalling that experience replay helps to break the temporal/chronol
 
 #### Updating parameters of actor and critic networks
 
-Given the mini-batch of experience, the DDPG algorithm updates the parameters of the local actor and critic networks using backpropagation. As shown in the algorithm pseudocode above, the loss function used to update the local critic network is a mean square error between the Q-value obtained by the target critic network and the expected Q-value obtained by the local critic network. When implementing the parameter update, we have used gradient clipping to set an upper bound of the gradients so as to avoid the issue of gradient exploding. 
+Given the mini-batch of experience, the DDPG algorithm updates the parameters of the local actor and critic networks using backpropagation. As shown in the algorithm pseudocode above, the loss function used to update the local critic network is a temporal difference (TD)-error where we use target critic network to compute Q-value for the next state. We need to minimize this loss. In actual implementation, we compute the mean square error `y - Q(s, a)` where `y` is the expected return as seen by the target Critic network, and `Q(s, a)` is action value predicted by the local Critic network. It is worth mentioning that When implementing parameter update, we used gradient clipping to set an upper bound of the gradients so as to avoid the issue of gradient exploding. 
 
-The parameters of the local actor network are updated similarly using a different loss function: 
+The parameters of the local actor network are updated similarly using a different loss function, which is the mean of the value given by the local Critic network for the actions taken by the local Actor network. We seek to maximize this quantity.
+
+After updating parameters of both local Actor and Critic network, we then use "soft" updates to update the target networks. By soft updates, we mean that only a fraction (defined by τ) of the weights of the local networks are transferred to the target networks in the following manner, 
+
+θ_target = τ*θ_local + (1 - τ)*θ_target
 
 #### Exploration 
 
