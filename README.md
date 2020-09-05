@@ -1,1 +1,5 @@
-# drlnd_collaboration_and_competition
+# Deep Reinforcement Learning Nanodgree 
+## Project on Collaboration and Competition
+
+### Project Description
+
